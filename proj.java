@@ -24,7 +24,7 @@ public class proj {
     }
     public static double multiplication(double num){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Put in your second number to add.");
+        System.out.println("Put in your second number to multiply.");
         double output = 0;
         String userInput = scanner.nextLine();
             output = num * Double.parseDouble(userInput);
@@ -34,7 +34,7 @@ public class proj {
     
     public static double division(double num){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Put in your second number to subtact.");
+        System.out.println("Put in your second number to divide.");
         double output = 0;
         String userInput = scanner.nextLine();
             output = num / Double.parseDouble(userInput);
@@ -52,9 +52,10 @@ public class proj {
             String num = "";
             String prev = "";
             double output = 0;
-            String userInput = "";
+            double answer = 0;
+            String userInput = " q";
             boolean n = false;
-            while(userInput != "q"){
+            while(userInput.charAt(0) != 'q'){
                 if(n == false){
                     System.out.println("put in your number");
                 }
@@ -64,31 +65,44 @@ public class proj {
                 userInput = scanner.nextLine();
             
                 //System.out.println(userInput.charAt(x));
-                int count = 1;
-                String math = "";
+                
                 if(userInput.charAt(0) == '-'){
-                    output = subtraction(output);
+                    output = subtraction(answer);
+                    answer = output;
                     System.out.println("New Num: " + output);
                     n = false;
                 }
                 else if(userInput.charAt(0) == '+'){
-                    output = addition(output);
+                    output = addition(answer);
+                    answer = output;
                     System.out.println("New Num: " + output);
                     n = false;
                 }
                 else if(userInput.charAt(0) == '*'){
-                    output = multiplication(output);
+                    output = multiplication(answer);
+                    answer = output;
                     System.out.println("New Num: " + output);
                     n = false;
                 }
                 else if(userInput.charAt(0) == '/'){
-                    output = division(output);
+                    output = division(answer);
+                    answer = output;
                     System.out.println("New Num: " + output);
                     n = false;
                 }
                 else{
-                    output = Double.parseDouble(userInput);
-                    n = true;
+                    if(userInput.charAt(0) == 'c'){
+                        output = 0;
+                        System.out.println("numbers cleared");
+                    }
+                    else if (userInput.charAt(0) == 'q')
+                    {
+                        System.out.println("Goodbye");
+                    }
+                    else{
+                        answer = Double.parseDouble(userInput);
+                        n = true;
+                    }
                 }
                
             }
